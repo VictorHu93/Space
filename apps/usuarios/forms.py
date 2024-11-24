@@ -19,11 +19,11 @@ class LoginForms(forms.Form):
         widget=forms.PasswordInput(
             attrs={
                 'class': 'form-control',
-                'placeholder': 'Digite sua senha',
+                'placeholder': 'Digite a sua senha',
             }
-        )
+        ),
     )
-    
+
 class CadastroForms(forms.Form):
     nome_cadastro=forms.CharField(
         label='Nome de Cadastro', 
@@ -54,32 +54,32 @@ class CadastroForms(forms.Form):
         widget=forms.PasswordInput(
             attrs={
                 'class': 'form-control',
-                'placeholder': 'Digite sua senha',
+                'placeholder': 'Digite a sua senha',
             }
         ),
     )
     senha_2=forms.CharField(
-        label='Confirme sua senha', 
+        label='Confirme a sua senha', 
         required=True, 
         max_length=70,
         widget=forms.PasswordInput(
             attrs={
                 'class': 'form-control',
-                'placeholder': 'Digite sua senha novamente',
+                'placeholder': 'Digite a sua senha novamente',
             }
         ),
     )
 
     def clean_nome_cadastro(self):
-        nome = self.cleaned_data.get("nome_cadastro")
-        
+        nome = self.cleaned_data.get('nome_cadastro')
+
         if nome:
             nome = nome.strip()
-            if " " in nome:
+            if ' ' in nome:
                 raise forms.ValidationError('Espaços não são permitidos nesse campo')
             else:
                 return nome
-    
+
     def clean_senha_2(self):
         senha_1 = self.cleaned_data.get('senha_1')
         senha_2 = self.cleaned_data.get('senha_2')
